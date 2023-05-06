@@ -1,0 +1,50 @@
+<html>
+<head>
+<title> Titulo de nuestra web </title>
+
+</head>
+
+<body>
+<!--la concha de mi madreeeee-->
+<h1>Titulo de nuestro documento</h1>
+
+<p>
+Y PARA EL <strong>ROJO POR FAVOR</strong> <br/> UN MINUTO DE SILENCIO
+QUE POR AMARGO Y POR CAGON SE FUERON PARA EL DESCENSO
+
+</p>
+
+<ul>
+<li>Item #1</li>
+<li>Item #2</li>
+<li>Item #3</li>
+<li>Item #4</li>
+<li>Item #5</li>
+</ul>
+
+
+<ol>
+<li>Item #1</li>
+<li>Item #2</li>
+<li>Item #3</li>
+<li>Item #4</li>
+<li>Item #5</li>
+</ol>
+
+
+
+<img src="imagenes/posibilidad mena.jpg" width="720" alt="SON BRASILEROS SE CAGAN" title="Mena contra los putos de Flamengo"/>
+<br/><br/>
+
+<a href="https://barrabrava.net"> BARRA BRAVA NET</a>
+<a href="imagenes/Rodet & Taylor.jpg"> Ir a la playlist de Taylor </a>
+
+<h2> QUIERO QUEMAR EL GALLINERO  </h2>
+
+
+</body>
+
+
+
+
+<html>
