@@ -1,50 +1,76 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title> Titulo de nuestra web </title>
+	<title>Image Carousel</title>
+	<style>
+		.carousel {
+		}
 
+		.carousel img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 1600px;
+			width: 702px;
+			opacity: 0;
+			transition: opacity 0.5s;
+		}
+
+		.carousel img.active {
+			opacity: 1;
+		}
+
+		.carousel button {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			z-index: 1;
+			background: transparent;
+			border: none;
+			font-size: 30px;
+			cursor: pointer;
+		}
+
+		.carousel button.prev {
+			left: 0;
+		}
+
+		.carousel button.next {
+			right: 0;
+		}
+	</style>
 </head>
 
 <body>
-<!--la concha de mi madreeeee-->
-<h1>Titulo de nuestro documento</h1>
+	<div class="carousel">
+		<img src="imagenes/Menu.jpg" class="active">
+		<img src="imagenes/Documentos.jpg">
+		<img src="imagenes/DNI.jpg">
+		<img src="imagenes/DNI atras.jpg">
+		<img src="imagenes/Detalles.jpg">
+		<button class="prev" onclick="prevImage()">&#8249;</button>
+		<button class="next" onclick="nextImage()">&#8250;</button>
+	</div>
 
-<p>
-Y PARA EL <strong>ROJO POR FAVOR</strong> <br/> UN MINUTO DE SILENCIO
-QUE POR AMARGO Y POR CAGON SE FUERON PARA EL DESCENSO
+	<script>
+		var images = document.querySelectorAll('.carousel img');
+		var currentIndex = 0;
 
-</p>
+		function showImage(index) {
+			if (index >= 0 && index < images.length) {
+				images[currentIndex].classList.remove('active');
+				images[index].classList.add('active');
+				currentIndex = index;
+			}
+		}
 
-<ul>
-<li>Item #1</li>
-<li>Item #2</li>
-<li>Item #3</li>
-<li>Item #4</li>
-<li>Item #5</li>
-</ul>
+		function prevImage() {
+			showImage(currentIndex - 1);
+		}
 
-
-<ol>
-<li>Item #1</li>
-<li>Item #2</li>
-<li>Item #3</li>
-<li>Item #4</li>
-<li>Item #5</li>
-</ol>
-
-
-
-<img src="imagenes/posibilidad mena.jpg" width="720" alt="SON BRASILEROS SE CAGAN" title="Mena contra los putos de Flamengo"/>
-<br/><br/>
-
-<a href="https://barrabrava.net"> BARRA BRAVA NET</a>
-<a href="imagenes/Rodet & Taylor.jpg"> Ir a la playlist de Taylor </a>
-
-<h2> QUIERO QUEMAR EL GALLINERO  </h2>
-
-
+		function nextImage() {
+			showImage(currentIndex + 1);
+		}
+	</script>
 </body>
-
-
-
-
-<html>
+</html>
