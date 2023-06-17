@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image Carousel</title>
+	<style>
+		.carousel {
+			position: relative;
+   	 	width: 702px;
+    	height: 1480px;
+   		 overflow: hidden;
+		}
+
+		.carousel img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 1480px;
+			width: 702px;
+			opacity: 0;
+			transition: opacity 0.5s;
+		}
+
+		.carousel img.active {
+			opacity: 1;
+		}
+
+		.carousel button {
+			position: absolute;
+			top: 50%;
+			height: 1480px;
+			width: 702px;
+			transform: translateY(-50%);
+			z-index: 1;
+			background: transparent;
+			border: none;
+			font-size: 30px;
+			cursor: pointer;
+		}
+
+		.carousel button.prev {
+			left: -300px;
+		}
+
+		.carousel button.next {
+			right:-300px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="carousel">
+		<img src="imagenes/Menu.jpg" class="active">
+		<img src="imagenes/Documentos.jpg">
+		<img src="imagenes/DNI.jpg">
+		<img src="imagenes/DNI atras.jpg">
+		<img src="imagenes/Detalles.jpg">
+		<button class="prev" onclick="prevImage()">&#8249;</button>
+		<button class="next" onclick="nextImage()">&#8250;</button>
+	</div>
+
+	<script>
+		var images = document.querySelectorAll('.carousel img');
+		var currentIndex = 0;
+
+		function showImage(index) {
+			if (index >= 0 && index < images.length) {
+				images[currentIndex].classList.remove('active');
+				images[index].classList.add('active');
+				currentIndex = index;
+			}
+		}
+
+		function prevImage() {
+			showImage(currentIndex - 1);
+		}
+
+		function nextImage() {
+			showImage(currentIndex + 1);
+		}
+	</script>
+</body>
+</html>
