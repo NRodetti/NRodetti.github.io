@@ -1,48 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mobile Page</title>
+	<title>Image Carousel</title>
+	<style>
+		.carousel {
+			position: relative;
+   	 	width: 702px;
+    	height: 1480px;
+   		 overflow: hidden;
+		}
+
+		.carousel img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 1480px;
+			width: 702px;
+			opacity: 0;
+			transition: opacity 0.5s;
+		}
+
+		.carousel img.active {
+			opacity: 1;
+		}
+
+		.carousel button {
+			position: absolute;
+			top: 50%;
+			height: 1480px;
+			width: 702px;
+			transform: translateY(-50%);
+			z-index: 1;
+			background: transparent;
+			border: none;
+			font-size: 30px;
+			cursor: pointer;
+		}
+
+		.carousel button.prev {
+			left: -300px;
+		}
+
+		.carousel button.next {
+			right:-300px;
+		}
+	</style>
 </head>
+
 <body>
-<div id="page1">
-<h1>Page 1</h1>
-<img src="imagenes/Menu.jpg" alt="Image 1">
-</div>
-<div id="page2">
-<h1>Page 2</h1>
-<img src="imagenes/Documentos.jpg" alt="Image 2">
-</div>
-<div id="page3">
-<h1>Page 3</h1>
-<img src="imagenes/DNI.jpg" alt="Background Image">
-<img src="imagenes/DNI atras.jpg" alt="Smaller Image" style="width: 20%; height: 20%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-<script>
-var image = document.getElementById("image3");
-image.addEventListener("touchstart", function(event) {
-var startX = event.touches[0].clientX;
-});
-image.addEventListener("touchmove", function(event) {
-var endX = event.touches[0].clientX;
-var deltaX = endX - startX;
-image.style.transform = "rotate(" + deltaX + "deg)";
-});
-</script>
-</div>
-<div id="page4">
-<h1>Page 4</h1>
-<img src="imagenes/Detalles.jpg" alt="Image 4">
-</div>
-<script>
-var pages = document.querySelectorAll("div");
-for (var i = 0; i < pages.length; i++) {
-pages[i].addEventListener("touchstart", function(event) {
-var page = this;
-var nextPage = pages[(i + 1) % pages.length];
-nextPage.style.display = "block";
-page.style.display = "none";
-});
-}
-</script>
+	<div class="carousel">
+		<img src="imagenes/Menu.jpg" class="active">
+		<img src="imagenes/Documentos.jpg">
+		<img src="imagenes/DNI.jpg">
+		<img src="imagenes/DNI atras.jpg">
+		<img src="imagenes/Detalles.jpg">
+		<button class="prev" onclick="prevImage()">&#8249;</button>
+		<button class="next" onclick="nextImage()">&#8250;</button>
+	</div>
+
+	<script>
+		var images = document.querySelectorAll('.carousel img');
+		var currentIndex = 0;
+
+		function showImage(index) {
+			if (index >= 0 && index < images.length) {
+				images[currentIndex].classList.remove('active');
+				images[index].classList.add('active');
+				currentIndex = index;
+			}
+		}
+
+		function prevImage() {
+			showImage(currentIndex - 1);
+		}
+
+		function nextImage() {
+			showImage(currentIndex + 1);
+		}
+	</script>
 </body>
 </html>
